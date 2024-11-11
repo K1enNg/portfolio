@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .text-animate {
     display: inline-block;
     opacity: 0;
@@ -7,19 +9,21 @@
 
 }
 
-// .text-animate-hover {
-//     min-width: 10px;
-//     display: inline-block;
-//     animation-fill-mode: both;
+.text-animate-hover {
+    min-width: 10px;
+    display: inline-block;
+    animation-fill-mode: both;
 
-//     &:hover {
-//         animation: rubberBand 1s;
-//         color: #ffd700;
-//     }
-// }
+    &:hover {
+        animation: rubberBand 1s;
+        color: #ffd700;
+    }
+}
+
+
 
 @for $i from 1 through 31 {
     .text-animate._#{$i} {
-        animation-delay: #{$i / 10}s;
+        animation-delay: #{math.div($i, 10)}s;
     }
 }

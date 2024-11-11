@@ -2,17 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss'
 import AnimatedLetters from '../AnimatedLetters';
+import Logo from './Logo';
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const nameArray = [' ', 'K', 'i', 'e', 'n']
   const jobArray = ['w', 'e', 'b', ' ', 'd', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r']
 
-  // useEffect(() => {
-  //   return setTimeout(() => {
-  //     setLetterClass('text-animate-hover')
-  //   }, 4000)
-  // }, [])
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLetterClass('text-animate-hover');
+    }, 4000);
+  
+    return () => clearTimeout(timer);
+  }, []);
+  
 
   return (
     <div className='container home-page'>
@@ -32,8 +36,11 @@ const Home = () => {
             idx={19} />
         </h1>
         <h2>Frontend Developer / JavaScript Programmer</h2>
-        <Link to="/contact" className='flat-button'>Contact Me</Link>
+        <Link to="/contact" className='flat-button'>
+          Contact Me
+        </Link>
       </div>
+      <Logo />
     </div>
   )
 }
